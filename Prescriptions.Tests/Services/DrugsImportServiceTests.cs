@@ -1,13 +1,11 @@
 ﻿using NUnit.Framework;
 using Prescriptions.Services;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Shouldly;
 using System.IO;
 using Prescriptions.Model.Drugs;
+using Prescriptions.Tests.Properties;
 
 namespace Prescriptions.Tests.Services
 {
@@ -16,15 +14,29 @@ namespace Prescriptions.Tests.Services
     {
         private DrugsCollection result;
         private Drug testDrug;
+        private FileInfo testFile;
 
-        public DrugsImportServiceTest()
+        [OneTimeSetUp]
+        public void SetUpFixture()
         {
             var service = new DrugsImportService();
             var testedLibraryDir = new FileInfo(this.GetType().Assembly.Location).Directory;
-            var files = testedLibraryDir.GetFiles("drugsTest.xml", SearchOption.AllDirectories).First();
 
-            this.result = service.Import(files.FullName);
+            this.testFile = new FileInfo(Path.GetTempFileName());
+            using (var writer = testFile.OpenWrite())
+            {
+                var encoded = Encoding.UTF8.GetBytes(Resources.TestXml);
+                writer.Write(encoded, 0, encoded.Length);
+            }
+
+            this.result = service.Import(testFile.FullName);
             this.testDrug = this.result.Drugs.Where(x => x.EAN == "5909990002306").First();
+        }
+
+        [OneTimeTearDown]
+        public void TearDownFixture()
+        {
+            this.testFile.Delete();
         }
 
         [Test]
