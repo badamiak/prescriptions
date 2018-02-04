@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Prescriptions.API.Model.Drugs
@@ -12,6 +13,9 @@ namespace Prescriptions.API.Model.Drugs
 
         [XmlIgnore]
         public virtual bool IsActive { get; set; }
+
+        [XmlIgnore]
+        public virtual string InactiveSince { get; set; }
 
         [XmlAttribute]
         public virtual string BL7 { get; set; }
@@ -49,5 +53,30 @@ namespace Prescriptions.API.Model.Drugs
         [XmlArray("Refundacja")]
         [XmlArrayItem("Poziom")]
         public virtual List<Refund> Refunds { get; set; } = new List<Refund>();
+
+        public bool HasChangedAccordingTo(Drug x)
+        {
+            var changed = false;
+            changed |= (this.BL7 != x.BL7);
+            changed |= (this.EAN != x.EAN);
+            changed |= (this.Psychotrope != x.Psychotrope);
+            changed |= (this.Senior != x.Senior);
+            changed |= (this.Vaccine != x.Vaccine);
+            changed |= (this.Price != x.Price);
+            changed |= (this.Name != x.Name);
+            changed |= (this.InternationalName != x.InternationalName);
+            changed |= (this.Form != x.Form);
+            changed |= (this.Dosage != x.Dosage);
+            changed |= (this.Packaging != x.Packaging);
+
+            var refundsChanged = false;
+            var thisRefundLevels = this.Refunds.Select(refund => refund.Level).ToList();
+            var xRefundLevels = x.Refunds.Select(refund => refund.Level);
+
+            refundsChanged |= xRefundLevels.Any(level => !thisRefundLevels.Contains(level));
+            refundsChanged |= thisRefundLevels.Any(level => !xRefundLevels.Contains(level));
+
+            return changed || refundsChanged;
+        }
     }
 }
