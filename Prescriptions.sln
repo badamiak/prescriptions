@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions", "Prescripti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions.Tests", "Prescriptions.Tests\Prescriptions.Tests.csproj", "{2A128485-1860-4467-A54C-0C31E557E5B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions.CLI", "Prescriptions.CLI\Prescriptions.CLI.csproj", "{FC59ED47-F542-4A32-B8B5-F16BE2DB5C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions.API", "Prescriptions.API\Prescriptions.API.csproj", "{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2A128485-1860-4467-A54C-0C31E557E5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A128485-1860-4467-A54C-0C31E557E5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A128485-1860-4467-A54C-0C31E557E5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC59ED47-F542-4A32-B8B5-F16BE2DB5C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC59ED47-F542-4A32-B8B5-F16BE2DB5C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC59ED47-F542-4A32-B8B5-F16BE2DB5C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC59ED47-F542-4A32-B8B5-F16BE2DB5C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

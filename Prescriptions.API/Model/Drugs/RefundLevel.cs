@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace Prescriptions.Model.Drugs
+namespace Prescriptions.API.Model.Drugs
 {
     [Serializable]
     public enum RefundLevel

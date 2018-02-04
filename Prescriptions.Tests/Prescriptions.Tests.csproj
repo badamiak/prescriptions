@@ -55,9 +55,14 @@
     <Compile Include="Services\DrugsImportServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Prescriptions.API\Prescriptions.API.csproj">
+      <Project>{6e04220a-02e7-4db5-91a4-f23a5a0ee2f8}</Project>
+      <Name>Prescriptions.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Prescriptions\Prescriptions.csproj">
       <Project>{4e6b541d-2bb8-4e61-9c8e-8eca37633207}</Project>
       <Name>Prescriptions</Name>
@@ -70,9 +75,6 @@
     <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="rsc\drugsTest.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="rsc\leki_09.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

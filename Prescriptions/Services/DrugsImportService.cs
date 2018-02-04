@@ -1,10 +1,11 @@
-﻿using Prescriptions.Model.Drugs;
+﻿using Prescriptions.API.Model.Drugs;
+using Prescriptions.API.Services;
 using System.IO;
 using System.Xml.Serialization;
 
 namespace Prescriptions.Services
 {
-    public class DrugsImportService
+    public class DrugsImportService : IDrugsImportService
     {
         public DrugsCollection Import (string xmlFilePath)
         {
