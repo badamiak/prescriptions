@@ -2,13 +2,14 @@
 using FluentNHibernate.Cfg.Db;
 using log4net;
 using NHibernate;
+using Prescriptions.API.Services;
 using Prescriptions.ModelMappings;
 using System;
 using System.Collections.Generic;
 
 namespace Prescriptions.Database
 {
-    public class DatabaseAccess : IDisposable
+    public class DatabaseAccess : IDisposable, IDatabaseAccess
     {
         private readonly ILog Logger = LogManager.GetLogger(typeof(DatabaseAccess));
 
@@ -27,7 +28,7 @@ namespace Prescriptions.Database
         {
         }
 
-        public DatabaseAccess InitDbConnection()
+        public IDatabaseAccess InitDbConnection()
         {
             this.configuration = SetupNHibernate();
             this.sessionFactory = this.configuration.BuildSessionFactory();
@@ -36,7 +37,7 @@ namespace Prescriptions.Database
             return this;
         }
 
-        public DatabaseAccess InitDbConnection(string host)
+        public IDatabaseAccess InitDbConnection(string host)
         {
             this.server = host;
             return InitDbConnection();

@@ -76,7 +76,7 @@
   <ItemGroup>
     <Compile Include="Options\Database\DeleteSchemaVerb.cs" />
     <Compile Include="Options\Database\CreateSchemaVerb.cs" />
-    <Compile Include="Options\Database\ImportToDatabase.cs" />
+    <Compile Include="Options\Database\ImportToDatabaseVerb.cs" />
     <Compile Include="Options\Database\UpdateSchcemaVerb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +86,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Prescriptions.API\Prescriptions.API.csproj">
+      <Project>{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}</Project>
+      <Name>Prescriptions.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Prescriptions\Prescriptions.csproj">
       <Project>{4e6b541d-2bb8-4e61-9c8e-8eca37633207}</Project>
       <Name>Prescriptions</Name>

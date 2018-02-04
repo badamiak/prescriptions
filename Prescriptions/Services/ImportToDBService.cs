@@ -1,18 +1,18 @@
 ﻿using Prescriptions.API.Model.Drugs;
-using Prescriptions.Database;
 using System.Linq;
 using System;
 using System.Collections.Generic;
+using Prescriptions.API.Services;
 
 namespace Prescriptions.Services
 {
 
-    public class ImportToDBService
+    public class ImportToDBService : IImportToDBService
     {
-        private DrugsImportService xmlImportService;
-        private DatabaseAccess database;
+        private IDrugsImportService xmlImportService;
+        private IDatabaseAccess database;
 
-        public ImportToDBService(DrugsImportService xmlImportService, DatabaseAccess databaseAccess)
+        public ImportToDBService(IDrugsImportService xmlImportService, IDatabaseAccess databaseAccess)
         {
             this.xmlImportService = xmlImportService;
             this.database = databaseAccess;

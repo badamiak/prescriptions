@@ -10,9 +10,9 @@ namespace Prescriptions
         {
             base.Load(builder);
 
-            builder.RegisterType<DatabaseAccess>().AsSelf().SingleInstance();
-            builder.RegisterType<DrugsImportService>().AsSelf().SingleInstance();
-            builder.RegisterType<ImportToDBService>().AsSelf().SingleInstance();
+            builder.RegisterType<DatabaseAccess>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<DrugsImportService>().AsImplementedInterfaces().SingleInstance();
+            builder.RegisterType<ImportToDBService>().AsImplementedInterfaces().SingleInstance();
 
         }
     }
