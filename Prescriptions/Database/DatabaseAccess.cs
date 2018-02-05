@@ -23,6 +23,7 @@ namespace Prescriptions.Database
         private ISession session;
         private readonly object sessionLock = new object();
 
+        private bool isInitiated  = false;
 
         public DatabaseAccess()
         {
@@ -30,17 +31,25 @@ namespace Prescriptions.Database
 
         public IDatabaseAccess InitDbConnection()
         {
-            this.configuration = SetupNHibernate();
-            this.sessionFactory = this.configuration.BuildSessionFactory();
-            this.session = this.sessionFactory.OpenSession();
+            if (!isInitiated)
+            {
+                this.configuration = SetupNHibernate();
+                this.sessionFactory = this.configuration.BuildSessionFactory();
+                this.session = this.sessionFactory.OpenSession();
+                this.isInitiated = false;
+            }
 
             return this;
         }
 
         public IDatabaseAccess InitDbConnection(string host)
         {
-            this.server = host;
+            if (!isInitiated)
+            {
+                this.server = host;
+            }
             return InitDbConnection();
+
         }
 
         private FluentConfiguration SetupNHibernate()
@@ -85,10 +94,10 @@ namespace Prescriptions.Database
             return criteria.List<T>();
         }
 
-        public void Persist<T>(T entity)
+        public void Save<T>(T entity)
         {
             var session = GetSession();
-            session.Persist(entity);
+            session.Save(entity);
             session.Flush();
 
         }

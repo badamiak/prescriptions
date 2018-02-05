@@ -27,7 +27,7 @@ namespace Prescriptions.Services
             var existingDrugsEans = existingDrugs.Select(x => x.EAN).ToList();
             var importedDrugsEans = importedDrugs.Drugs.Select(x => x.EAN).ToList();
 
-            var newDrugs = importedDrugs.Drugs.Where(x => existingDrugsEans.Contains(x.EAN)).ToList();
+            var newDrugs = importedDrugs.Drugs.Where(x => !existingDrugsEans.Contains(x.EAN)).ToList();
             var removedDrugs = existingDrugs.Where(x => !importedDrugsEans.Contains(x.EAN)).ToList();
 
             var newAndRemovedDrugs = newDrugs.Concat(removedDrugs).ToList();
@@ -46,19 +46,19 @@ namespace Prescriptions.Services
 
         private void PersistNewDrugs(List<Drug> newDrugs)
         {
-            newDrugs.ForEach(database.Persist);
+            newDrugs.ForEach(database.Save);
         }
 
         private void MarkRemovedDrugsAsInactive(List<Drug> removedDrugs)
         {
             var timestamp = DateTime.Now.ToString("yyyyMMdd");
             removedDrugs.ForEach(x => { x.IsActive = false; x.InactiveSince = timestamp; });
-            removedDrugs.ForEach(this.database.Persist);
+            removedDrugs.ForEach(this.database.Save);
         }
 
         private IEnumerable<Drug> GetChangedDrugs(IEnumerable<Drug> possiblyChangedDrugsFromImport, List<Drug> existingDrugs)
         {
-            var changedEans = possiblyChangedDrugsFromImport.Where(x => existingDrugs.Where(e => e.EAN == x.EAN).First().HasChangedAccordingTo(x)).Select(x=>x.EAN).ToList();
+            var changedEans = possiblyChangedDrugsFromImport.Where(x => existingDrugs.Where(e => e.EAN == x.EAN).FirstOrDefault()?.HasChangedAccordingTo(x) ?? false).Select(x=>x.EAN).ToList();
             return existingDrugs.Where(x=>changedEans.Contains(x.EAN));
         }
 

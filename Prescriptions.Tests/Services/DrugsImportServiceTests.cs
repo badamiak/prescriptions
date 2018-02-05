@@ -104,7 +104,7 @@ namespace Prescriptions.Tests.Services
         [Test]
         public void ParsedRefundationsShouldContain4Objects()
         {
-            this.testDrug.Refunds.Count.ShouldBe(4);
+            this.testDrug.Refunds.ToList().Count.ShouldBe(4);
         }
         [TestCase(RefundLevel.Full, "full")]
         [TestCase(RefundLevel.LumpSum, "lump sum")]

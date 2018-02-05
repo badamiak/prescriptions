@@ -12,6 +12,6 @@ namespace Prescriptions.API.Services
         IList<T> GetEntitiesOfType<T>(Func<ICriteria, ICriteria> criteriaStrategy) where T : class;
         IDatabaseAccess InitDbConnection();
         IDatabaseAccess InitDbConnection(string host);
-        void Persist<T>(T entity);
+        void Save<T>(T entity);
     }
 }

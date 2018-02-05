@@ -8,6 +8,8 @@ namespace Prescriptions.API.Model.Drugs
     {
         [XmlEnum("bezpłatny")]
         Full,
+        [XmlEnum("bezpłatny do limitu")]
+        Limited,
         [XmlEnum("ryczałt")]
         LumpSum,
         [XmlEnum("50%")]

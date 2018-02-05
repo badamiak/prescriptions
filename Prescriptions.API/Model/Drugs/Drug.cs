@@ -12,7 +12,7 @@ namespace Prescriptions.API.Model.Drugs
         public virtual long Id { get; set; }
 
         [XmlIgnore]
-        public virtual bool IsActive { get; set; }
+        public virtual bool IsActive { get; set; } = true;
 
         [XmlIgnore]
         public virtual string InactiveSince { get; set; }
@@ -50,11 +50,19 @@ namespace Prescriptions.API.Model.Drugs
         [XmlElement("Opakowanie")]
         public virtual string Packaging { get; set; }
 
+        [XmlIgnore]
+        private IList<Refund> refunds = new List<Refund>();
+
         [XmlArray("Refundacja")]
         [XmlArrayItem("Poziom")]
-        public virtual List<Refund> Refunds { get; set; } = new List<Refund>();
+        public virtual List<Refund> XmlRefunds { get { return this.refunds.ToList(); } set { this.refunds = value; } }
 
-        public bool HasChangedAccordingTo(Drug x)
+        [XmlIgnore]
+        public virtual IList<Refund> Refunds { get { return this.refunds; } set { this.refunds = value; } }
+
+
+        
+        public virtual bool HasChangedAccordingTo(Drug x)
         {
             var changed = false;
             changed |= (this.BL7 != x.BL7);

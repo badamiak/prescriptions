@@ -13,6 +13,8 @@ namespace Prescriptions.CLI
     class Program
     {
         private static ILog Logger = LogManager.GetLogger(typeof(Program));
+        private static string Host = ConfigurationManager.AppSettings.Get("DbHost");
+        
 
         static Program()
         {
@@ -21,12 +23,11 @@ namespace Prescriptions.CLI
 
         static void Main(string[] args)
         {
-            string host = ConfigurationManager.AppSettings.Get("DbHost");
 
             Parser.Default.ParseArguments<CreateSchemaVerb, UpdateSchemaVerb, DeleteSchemaVerb, ImportToDatabaseVerb>(args)
-                .WithParsed<CreateSchemaVerb>(o => new DatabaseSchemaOperations().CreateSchema(host))
-                .WithParsed<UpdateSchemaVerb>(o => new DatabaseSchemaOperations().UpdateSchema(host))
-                .WithParsed<DeleteSchemaVerb>(o => new DatabaseSchemaOperations().DeleteSchema(host))
+                .WithParsed<CreateSchemaVerb>(o => new DatabaseSchemaOperations().CreateSchema(Host))
+                .WithParsed<UpdateSchemaVerb>(o => new DatabaseSchemaOperations().UpdateSchema(Host))
+                .WithParsed<DeleteSchemaVerb>(o => new DatabaseSchemaOperations().DeleteSchema(Host))
                 .WithParsed<ImportToDatabaseVerb>(Import)
                 .WithNotParsed(errors => errors.ToList().ForEach(e => Console.WriteLine(e)));
         }
@@ -35,8 +36,11 @@ namespace Prescriptions.CLI
         {
             var containerBuilder = new ContainerBuilder();
             containerBuilder.RegisterModule<PrescriptorModule>();
-            var ImportService = containerBuilder.Build().Resolve<IImportToDBService>();
+            var container = containerBuilder.Build();
 
+            container.Resolve<IDatabaseAccess>().InitDbConnection(Host);
+
+            var ImportService = container.Resolve<IImportToDBService>();
             ImportService.Import(options.FromFile);   
         }
 
