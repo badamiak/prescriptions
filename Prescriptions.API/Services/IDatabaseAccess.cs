@@ -13,5 +13,6 @@ namespace Prescriptions.API.Services
         IDatabaseAccess InitDbConnection();
         IDatabaseAccess InitDbConnection(string host);
         void Save<T>(T entity);
+        void SaveBatch<T>(IEnumerable<T> items);
     }
 }

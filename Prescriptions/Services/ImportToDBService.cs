@@ -46,14 +46,14 @@ namespace Prescriptions.Services
 
         private void PersistNewDrugs(List<Drug> newDrugs)
         {
-            newDrugs.ForEach(database.Save);
+            database.SaveBatch(newDrugs);
         }
 
         private void MarkRemovedDrugsAsInactive(List<Drug> removedDrugs)
         {
             var timestamp = DateTime.Now.ToString("yyyyMMdd");
             removedDrugs.ForEach(x => { x.IsActive = false; x.InactiveSince = timestamp; });
-            removedDrugs.ForEach(this.database.Save);
+            database.SaveBatch(removedDrugs);
         }
 
         private IEnumerable<Drug> GetChangedDrugs(IEnumerable<Drug> possiblyChangedDrugsFromImport, List<Drug> existingDrugs)

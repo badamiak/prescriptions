@@ -6,6 +6,7 @@ using Prescriptions.API.Services;
 using Prescriptions.ModelMappings;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Prescriptions.Database
 {
@@ -99,7 +100,20 @@ namespace Prescriptions.Database
             var session = GetSession();
             session.Save(entity);
             session.Flush();
+        }
 
+        public void SaveBatch<T>(IEnumerable<T> items)
+        {
+            using (var session = this.sessionFactory.OpenSession())
+            {
+                using (var tx = session.BeginTransaction())
+                {
+                    items.ToList().ForEach(x=>session.Save(x));
+                    session.Flush();
+
+                    tx.Commit();
+                }
+            }
         }
 
         public async void Flush()

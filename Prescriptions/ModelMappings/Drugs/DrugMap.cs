@@ -22,7 +22,7 @@ namespace Prescriptions.ModelMappings
             Map(x => x.Vaccine);
             Map(x => x.IsActive);
             Map(x => x.InactiveSince);
-            HasMany(x => x.Refunds);
+            HasMany(x => x.Refunds).Cascade.SaveUpdate();
         }
     }
 }
