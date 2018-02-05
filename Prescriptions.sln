@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions.CLI", "Prescr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prescriptions.API", "Prescriptions.API\Prescriptions.API.csproj", "{6E04220A-02E7-4DB5-91A4-F23A5A0EE2F8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "rsc", "rsc", "{D69047B1-7698-4B0B-893E-90BA83AE4DB6}"
+	ProjectSection(SolutionItems) = preProject
+		rsc\leki_09.xml = rsc\leki_09.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
