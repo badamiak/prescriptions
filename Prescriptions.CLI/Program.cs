@@ -23,6 +23,9 @@ namespace Prescriptions.CLI
 
         static void Main(string[] args)
         {
+            var assembly = typeof(Program).Assembly;
+            Logger.Info($"{assembly.FullName}");
+            Logger.Info($"Version: [{assembly.GetName().Version}] Compiled at: [{new System.IO.FileInfo(assembly.Location).LastWriteTimeUtc}]");
 
             Parser.Default.ParseArguments<CreateSchemaVerb, UpdateSchemaVerb, DeleteSchemaVerb, ImportToDatabaseVerb>(args)
                 .WithParsed<CreateSchemaVerb>(o => new DatabaseSchemaOperations().CreateSchema(Host))

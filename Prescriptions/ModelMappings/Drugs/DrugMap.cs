@@ -9,7 +9,7 @@ namespace Prescriptions.ModelMappings
         {
             Table("Drugs");
             Id(x => x.Id).GeneratedBy.Identity();
-            Map(x => x.BL7);
+            Map(x => x.BL7).Not.LazyLoad();
             Map(x => x.Dosage);
             Map(x => x.EAN);
             Map(x => x.Form);
@@ -22,7 +22,7 @@ namespace Prescriptions.ModelMappings
             Map(x => x.Vaccine);
             Map(x => x.IsActive);
             Map(x => x.InactiveSince);
-            HasMany(x => x.Refunds).Cascade.SaveUpdate();
+            HasManyToMany(x => x.Refunds).Cascade.AllDeleteOrphan();
         }
     }
 }

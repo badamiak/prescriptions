@@ -51,14 +51,14 @@ namespace Prescriptions.API.Model.Drugs
         public virtual string Packaging { get; set; }
 
         [XmlIgnore]
-        private IList<Refund> refunds = new List<Refund>();
+        private IList<Refund> _refund = new List<Refund>();
 
         [XmlArray("Refundacja")]
         [XmlArrayItem("Poziom")]
-        public virtual List<Refund> XmlRefunds { get { return this.refunds.ToList(); } set { this.refunds = value; } }
+        public virtual List<Refund> XmlRefunds { get { return this._refund.ToList(); } set { this._refund = value; } }
 
         [XmlIgnore]
-        public virtual IList<Refund> Refunds { get { return this.refunds; } set { this.refunds = value; } }
+        public virtual IList<Refund> Refunds { get { return this._refund; } set { this._refund = value; } }
 
 
         

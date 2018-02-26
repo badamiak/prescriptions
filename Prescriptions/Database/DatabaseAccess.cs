@@ -32,7 +32,7 @@ namespace Prescriptions.Database
 
         public IDatabaseAccess InitDbConnection()
         {
-            if (!isInitiated)
+            if (!this.isInitiated)
             {
                 this.configuration = SetupNHibernate();
                 this.sessionFactory = this.configuration.BuildSessionFactory();
@@ -45,7 +45,7 @@ namespace Prescriptions.Database
 
         public IDatabaseAccess InitDbConnection(string host)
         {
-            if (!isInitiated)
+            if (!this.isInitiated)
             {
                 this.server = host;
             }

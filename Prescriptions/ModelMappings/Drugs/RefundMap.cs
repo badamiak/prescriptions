@@ -9,8 +9,8 @@ namespace Prescriptions.ModelMappings
         {
             Table("Refunds");
             Id(x => x.Id).GeneratedBy.Identity();
-            Map(x => x.Value);
-            Map(x => x.Level);
+            Map(x => x.Value).Not.LazyLoad().CustomSqlType("varchar(2000)");
+            Map(x => x.Level).Not.LazyLoad();
         }
     }
 }
