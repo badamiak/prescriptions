@@ -1,0 +1,28 @@
+﻿<Window x:Class="Prescriptions.GUI.Views.CreatePatientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prescriptions.GUI.Views"
+        mc:Ignorable="d"
+        Title="CreatePatientWindow" Height="300" Width="300">
+    <UniformGrid Columns="2">
+        <Label>Name</Label>
+        <TextBox Text="{Binding Path=Name, Mode=TwoWay}"></TextBox>
+
+        <Label>Surname</Label>
+        <TextBox Text="{Binding Path=Surname, Mode=TwoWay}"></TextBox>
+
+        <Label>PESEL</Label>
+        <TextBox Text="{Binding Path=Pesel, Mode=TwoWay}" LostFocus="TextBox_LostFocus"/>
+
+        <Label>Address</Label>
+        <TextBox Text="{Binding Path=Address, Mode=TwoWay}"></TextBox>
+
+        <Label>Date of birth</Label>
+        <DatePicker SelectedDate="{Binding Path=DateOfBirth, Mode=TwoWay}"></DatePicker>
+
+        <Button Click="SaveButtonClicked">Save</Button>
+        <Button Click="CancelButtonClicked">Cancel</Button>
+    </UniformGrid>
+</Window>

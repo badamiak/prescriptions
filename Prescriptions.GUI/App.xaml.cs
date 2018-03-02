@@ -1,5 +1,7 @@
 ﻿using Autofac;
+using Prescriptions.API.Services;
 using Prescriptions.GUI.Views;
+using System.Configuration;
 using System.Windows;
 
 namespace Prescriptions.GUI
@@ -17,7 +19,9 @@ namespace Prescriptions.GUI
 
             var container = builder.Build();
 
-            container.Resolve<MainWindow>().Show();
+            container.Resolve<IDatabaseAccess>().InitDbConnection(ConfigurationManager.AppSettings.Get("DbHost"));
+
+            container.Resolve<MainWindow>().AddContainer(container).Show();
         }
     }
 }

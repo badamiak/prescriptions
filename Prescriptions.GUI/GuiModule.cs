@@ -12,6 +12,8 @@ namespace Prescriptions.GUI
 
             builder.RegisterType<MainWindow>().AsSelf();
             builder.RegisterType<MainWindowContext>().AsSelf();
+
+            builder.RegisterType<CreatePatientWindow>().AsSelf();
         }
     }
 }

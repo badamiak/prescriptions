@@ -53,6 +53,10 @@
     <Compile Include="Model\Drugs\DrugsCollection.cs" />
     <Compile Include="Model\Drugs\Refund.cs" />
     <Compile Include="Model\Drugs\RefundLevel.cs" />
+    <Compile Include="Model\IVerifiable.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\PermissionType.cs" />
+    <Compile Include="Model\Prescription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IDatabaseAccess.cs" />
     <Compile Include="Services\IDrugsImportService.cs" />

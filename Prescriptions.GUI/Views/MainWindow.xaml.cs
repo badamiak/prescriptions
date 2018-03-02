@@ -1,4 +1,6 @@
-﻿using Prescriptions.GUI.ViewModels;
+﻿using Autofac;
+using Prescriptions.API.Model;
+using Prescriptions.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,14 +23,27 @@ namespace Prescriptions.GUI.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IContainer Container;
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        public MainWindow AddContainer(IContainer container)
+        {
+            this.Container = container;
+            return this;
+        }
+
         public MainWindow(MainWindowContext context) : this()
         {
             this.DataContext = context;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var createPatientView = new CreatePatientWindow(this.Container, new Patient());
+            createPatientView.ShowDialog();
         }
     }
 }

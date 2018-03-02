@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Prescriptions.GUI.Views.PrescriptionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pres="clr-namespace:Prescriptions.API.Model;assembly=Prescriptions.API"
+             xmlns:local="clr-namespace:Prescriptions.GUI.Views"
+             Background="white"
+             mc:Ignorable="d" 
+             Height="860" Width="440"
+             d:DataContext="{d:DesignInstance Type=pres:Prescription}">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical">
+
+            <StackPanel Orientation="Horizontal">
+                <Label>Recepta</Label>
+                    <TextBox Margin="5,0,0,0" Text="{Binding IdNumber, Mode=TwoWay}"/>
+                </StackPanel>
+                <Label>Świadczeniodawca</Label>
+                <TextBox TextWrapping="Wrap" Text="{Binding PrescribedBy, Mode=TwoWay}"/>
+            </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding ForPatient}">
+            <Label>Pacjent</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Name}"/>
+                <TextBox Text="{Binding Surname}"/>
+            </StackPanel>
+            <TextBox Text="{Binding Address}"/>
+            <TextBox Text="{Binding Pesel}"/>
+        </StackPanel>
+        <UniformGrid Columns="1" Grid.Row="1" Grid.Column="2">
+            <StackPanel>
+                <Label>Oddział NFZ</Label>
+                <TextBox Text="{Binding NfzWardId}"/>
+            </StackPanel>
+            <Label>Uprawnienia</Label>
+            <Label>Choroby przewlekłe</Label>
+        </UniformGrid>
+        <StackPanel  Grid.Row="2" Grid.ColumnSpan="3">
+            <Label>Rp.</Label>
+            <ListBox Grid.RowSpan="2" ItemsSource="{Binding Drugs}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Text="{Binding Name}"/>
+                            <TextBox Grid.Column="1" Text="{Binding Refunds}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Label>Wystawiono dnia</Label>
+            <Label>Ważna od dnia</Label>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+            <Label>Dane id. i podpis lekarza</Label>
+            <Label>Dane podmiotu wystawiającego</Label>
+        </StackPanel>
+    </Grid>
+</UserControl>

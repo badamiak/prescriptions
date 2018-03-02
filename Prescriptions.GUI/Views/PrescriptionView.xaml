@@ -1,13 +1,10 @@
-﻿<Window x:Class="Prescriptions.GUI.Views.MainWindow"
+﻿<Window x:Class="Prescriptions.GUI.Views.PrescriptionView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prescriptions.GUI.Views"
         mc:Ignorable="d"
-        Title="{Binding Path=AppTitle}" Height="350" Width="525">
-    <UniformGrid Columns="1">
-        <Button Click="Button_Click">Nowy pacjent</Button>
-        <Button>Nowa recepta</Button>
-    </UniformGrid>
+        Title="PrescriptionView" Height="860" Width="440">
+    
 </Window>
