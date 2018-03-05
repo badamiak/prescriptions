@@ -9,13 +9,16 @@ namespace Prescriptions.API.Model
 {
     public class Prescription
     {
-        public virtual string PrescribedBy { get; set; }
         public virtual string Regon { get; set; }
         public virtual string IdNumber { get; set; }
         public virtual Patient ForPatient { get; set; }
+        public virtual Doctor PrescribedBy { get; set; }
         public virtual int NfzWardId { get; set; }
         public virtual PermissionType Permission { get; set; }
         public virtual int PermissionNumber {get;set;}
-        public virtual IList<Drug> Drugs { get; set; }
+        public virtual IList<PrescribedDrug> Drugs { get; set; }
+        public virtual DateTime CreationDate { get; set; } = DateTime.Now;
+        public virtual DateTime ValidFrom { get; set; } = DateTime.Now;
+        public virtual string PrescribedByCompany { get; set; }
     }
 }

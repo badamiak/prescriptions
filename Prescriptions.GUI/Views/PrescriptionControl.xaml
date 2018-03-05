@@ -28,13 +28,13 @@
                     <TextBox Margin="5,0,0,0" Text="{Binding IdNumber, Mode=TwoWay}"/>
                 </StackPanel>
                 <Label>Świadczeniodawca</Label>
-                <TextBox TextWrapping="Wrap" Text="{Binding PrescribedBy, Mode=TwoWay}"/>
+                <TextBox TextWrapping="Wrap" Text="{Binding PrescribedByCompany, Mode=TwoWay}"/>
             </StackPanel>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding ForPatient}">
             <Label>Pacjent</Label>
             <StackPanel Orientation="Horizontal">
                 <TextBox Text="{Binding Name}"/>
-                <TextBox Text="{Binding Surname}"/>
+                <TextBox Margin="5,0,0,0"  Text="{Binding Surname}"/>
             </StackPanel>
             <TextBox Text="{Binding Address}"/>
             <TextBox Text="{Binding Pesel}"/>
@@ -52,13 +52,13 @@
             <ListBox Grid.RowSpan="2" ItemsSource="{Binding Drugs}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid>
+                        <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="8*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <TextBox Grid.Column="0" Text="{Binding Name}"/>
-                            <TextBox Grid.Column="1" Text="{Binding Refunds}"/>
+                            <TextBox Grid.Column="1" Text="{Binding AppliedRefund}"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -66,10 +66,19 @@
         </StackPanel>
         <StackPanel Grid.Row="3">
             <Label>Wystawiono dnia</Label>
+            <DatePicker SelectedDate="{Binding CreationDate}"/>
+            <Separator/>
             <Label>Ważna od dnia</Label>
+            <DatePicker SelectedDate="{Binding ValidFrom}"/>
+            <Separator/>
         </StackPanel>
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
             <Label>Dane id. i podpis lekarza</Label>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding PrescribedByDoctor.Name, Mode=OneWay}"/>
+                <TextBox Margin="5,0,0,0" Text="{Binding PrescribedByDoctor.Surname, Mode=OneWay}"/>
+            </StackPanel>
+            <TextBox Text="{Binding PrescribedByDoctor.PermissionId, Mode=OneWay}"/>
             <Label>Dane podmiotu wystawiającego</Label>
         </StackPanel>
     </Grid>
