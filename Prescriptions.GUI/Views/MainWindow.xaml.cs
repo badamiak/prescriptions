@@ -45,5 +45,11 @@ namespace Prescriptions.GUI.Views
             var createPatientView = new CreatePatientWindow(this.Container, new Patient());
             createPatientView.ShowDialog();
         }
+
+        private void NewPrescriptionButtonClick(object sender, RoutedEventArgs e)
+        {
+            var createPrescriptionView = new CreatePrescriptionWindow();
+            createPrescriptionView.ShowDialog();
+        }
     }
 }

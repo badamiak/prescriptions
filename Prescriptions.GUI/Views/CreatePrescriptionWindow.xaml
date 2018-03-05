@@ -1,0 +1,18 @@
+﻿<Window x:Class="Prescriptions.GUI.Views.CreatePrescriptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prescriptions.GUI.Views"
+        mc:Ignorable="d"
+        Title="CreatePrescriptionWindow" Height="915" Width="455">
+    <StackPanel>
+        <local:PrescriptionControl x:Name="PrescriptionPaper" DataContext="">
+        </local:PrescriptionControl>
+        <UniformGrid Columns="3">
+            <Button Click="PrintButtonClick">Drukuj</Button>
+            <Button Click="SaveButtonClick">Zapisz</Button>
+            <Button Click="CancelButtonClick">Anuluj</Button>
+        </UniformGrid>
+    </StackPanel>
+</Window>

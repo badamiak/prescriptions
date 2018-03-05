@@ -19,6 +19,7 @@ namespace Prescriptions.API.Model
         public virtual IList<PrescribedDrug> Drugs { get; set; }
         public virtual DateTime CreationDate { get; set; } = DateTime.Now;
         public virtual DateTime ValidFrom { get; set; } = DateTime.Now;
+        public virtual Doctor PrescribedByDoctor { get; set; }
         public virtual string PrescribedByCompany { get; set; }
     }
 }

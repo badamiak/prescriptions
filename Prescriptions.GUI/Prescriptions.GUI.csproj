@@ -75,6 +75,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\CreatePrescriptionWindow.xaml.cs">
+      <DependentUpon>CreatePrescriptionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrescriptionControl.xaml.cs">
       <DependentUpon>PrescriptionControl.xaml</DependentUpon>
     </Compile>
@@ -82,6 +85,10 @@
       <DependentUpon>PrescriptionView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\CreatePatientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreatePrescriptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

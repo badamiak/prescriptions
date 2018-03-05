@@ -79,7 +79,7 @@
                 <TextBox Margin="5,0,0,0" Text="{Binding PrescribedByDoctor.Surname, Mode=OneWay}"/>
             </StackPanel>
             <TextBox Text="{Binding PrescribedByDoctor.PermissionId, Mode=OneWay}"/>
-            <Label>Dane podmiotu wystawiającego</Label>
         </StackPanel>
+        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">Dane podmiotu wystawiającego</Label>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prescriptions.API.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,17 @@ namespace Prescriptions.GUI.Views
     /// </summary>
     public partial class PrescriptionControl : UserControl
     {
+        Prescription Prescription { get { return this.DataContext as Prescription; } set { this.DataContext = value; } }
+
         public PrescriptionControl()
         {
             InitializeComponent();
+        }
+
+        public PrescriptionControl(Prescription data) : this()
+        {
+            this.Prescription = data;
+
         }
     }
 }
