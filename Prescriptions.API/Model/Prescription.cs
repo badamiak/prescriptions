@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Prescriptions.API.Model
 {
@@ -23,6 +25,8 @@ namespace Prescriptions.API.Model
         public virtual DateTime ValidFrom { get; set; } = DateTime.Now;
         public virtual Doctor PrescribedByDoctor { get; set; }
         public virtual string PrescribedByCompany { get; set; }
+        public virtual BitmapImage PrescribedByCompanyBarcode { get; set; }
+        public BitmapImage IdNumberBarcode { get; set; }
 
         public virtual event PropertyChangedEventHandler PropertyChanged;
 

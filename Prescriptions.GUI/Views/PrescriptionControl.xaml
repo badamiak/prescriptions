@@ -29,6 +29,8 @@
                 </StackPanel>
                 <Label>Świadczeniodawca</Label>
                 <Label Content="{Binding PrescribedByCompany, Mode=TwoWay}"/>
+                <Image Margin="15,0,15,0" Height="45" Source="{Binding PrescribedByCompanyBarcode}"/>
+
             </StackPanel>
             <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="3"/>
             
@@ -77,6 +79,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
+            <Image Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Margin="15,5,15,5" Height="45" Source="{Binding IdNumberBarcode}"/>
             <StackPanel Grid.Row="3">
                 <Label>Wystawiono dnia</Label>
                 <Label Content="{Binding CreationDate}"/>
@@ -94,6 +97,7 @@
                     <Label Margin="5,0,0,0" Content="{Binding PrescribedByDoctor.Surname, Mode=OneWay}"/>
                 </StackPanel>
                 <Label Content="{Binding PrescribedByDoctor.PermissionId, Mode=OneWay}"/>
+                <Image Margin="15,0,15,0" Height="30" Source="{Binding PrescribedByDoctor.PermissionIdBarcode}"/>
             </StackPanel>
             <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">Dane podmiotu wystawiającego</Label>
         </Grid>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace Prescriptions.API.Model
 {
@@ -11,5 +12,6 @@ namespace Prescriptions.API.Model
         public virtual string Name { get; set; }
         public virtual string Surname { get; set; }
         public virtual string PermissionId { get; set; }
+        public virtual BitmapImage PermissionIdBarcode { get; set; }
     }
 }

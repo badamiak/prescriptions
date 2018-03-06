@@ -3,7 +3,10 @@ using Prescriptions.API.Model;
 using Prescriptions.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace Prescriptions.GUI.Views
 {
@@ -51,19 +54,33 @@ namespace Prescriptions.GUI.Views
                     new PrescribedDrug{Name = "lek 1", AppliedRefund = API.Model.Drugs.RefundLevel.Bezpłatny},
                     new PrescribedDrug{Name = "lek 2", AppliedRefund = API.Model.Drugs.RefundLevel.FiftyPercent}
                 },
-                ForPatient = new Patient { Name = "Jan", Surname = "Kowalski" },
-                IdNumber = "112542",
+                ForPatient = new Patient { Name = "Jan", Surname = "Kowalski", Pesel = "87030501420" },
+                IdNumber = "0215010000014221845781",
                 NfzWardId = 15,
-                Permission = PermissionType.S,
+                Permission = PermissionType.X,
                 PermissionNumber = 1252424,
                 PrescribedBy = new Doctor { Name = "Rafał", Surname = "Wilczur", PermissionId = "12512415" },
                 PrescribedByCompany = "Twój lekarz sp. z o.o.",
-                PrescribedByDoctor = new Doctor { Name = "Rafał", Surname = "Wilczur", PermissionId = "12512415" },
+                PrescribedByDoctor = new Doctor { Name = "Rafał", Surname = "Wilczur", PermissionId = "NPWZ 12345678", PermissionIdBarcode = GetImageFromBase64(riverOx_barcode128.Barcode128.generateBarcode("NPWZ 12345678", false)) },
                 Regon = "23627236",
-                ValidFrom = DateTime.Now
+                ValidFrom = DateTime.Now,
+                PrescribedByCompanyBarcode = GetImageFromBase64(riverOx_barcode128.Barcode128.generateBarcode("0123456123456", false)),
+                IdNumberBarcode = GetImageFromBase64(riverOx_barcode128.Barcode128.generateBarcode("0215010000014221845781", false))
             };
             var createPrescriptionView = new CreatePrescriptionWindow(this.Container, prescription);
             createPrescriptionView.ShowDialog();
+        }
+
+        private BitmapImage GetImageFromBase64(string base64EncodedImage)
+        {
+            var bytes = Convert.FromBase64String(base64EncodedImage.Remove(0, "data:image/png;base64,".Length));
+            var ms = new MemoryStream(bytes);
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.StreamSource = ms;
+            image.EndInit();
+            return image;
+            
         }
 
     }
