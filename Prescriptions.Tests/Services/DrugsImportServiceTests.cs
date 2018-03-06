@@ -106,7 +106,7 @@ namespace Prescriptions.Tests.Services
         {
             this.testDrug.Refunds.ToList().Count.ShouldBe(4);
         }
-        [TestCase(RefundLevel.Full, "full")]
+        [TestCase(RefundLevel.Bezpłatny, "full")]
         [TestCase(RefundLevel.LumpSum, "lump sum")]
         [TestCase(RefundLevel.FiftyPercent, "fifty")]
         [TestCase(RefundLevel.ThirtyPercent, "thirty")]

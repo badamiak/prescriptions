@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prescriptions.GUI.Views"
         mc:Ignorable="d"
-        Title="CreatePrescriptionWindow" Height="915" Width="455">
+        Title="CreatePrescriptionWindow" Height="915" Width="470">
     <StackPanel>
-        <local:PrescriptionControl x:Name="PrescriptionPaper" DataContext="">
-        </local:PrescriptionControl>
+        <Menu>
+            <MenuItem Header="Pacjent" Click="SelectPatient"></MenuItem>
+        </Menu>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
+            <local:PrescriptionControl x:Name="PrescriptionPaper" ScrollViewer.CanContentScroll="True"/>
+        </ScrollViewer>
         <UniformGrid Columns="3">
             <Button Click="PrintButtonClick">Drukuj</Button>
             <Button Click="SaveButtonClick">Zapisz</Button>

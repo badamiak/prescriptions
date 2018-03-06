@@ -9,5 +9,6 @@
     <UniformGrid Columns="1">
         <Button Click="Button_Click">Nowy pacjent</Button>
         <Button Click="NewPrescriptionButtonClick">Nowa recepta</Button>
+        <Button Click="POCPrescriptionPrintButtonClick">POC druk</Button>
     </UniformGrid>
 </Window>

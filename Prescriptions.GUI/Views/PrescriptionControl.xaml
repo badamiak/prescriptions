@@ -51,7 +51,7 @@
                 </StackPanel>
                 <StackPanel>
                     <Label>Uprawnienia</Label>
-                    <Label></Label>
+                    <Label Content="{Binding Permission}"></Label>
                     <Separator BorderBrush="Black" BorderThickness="3"/>
                 </StackPanel>
                 <Label>Choroby przewlekłe</Label>

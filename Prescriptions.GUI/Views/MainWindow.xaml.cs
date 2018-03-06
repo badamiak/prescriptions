@@ -3,18 +3,7 @@ using Prescriptions.API.Model;
 using Prescriptions.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Prescriptions.GUI.Views
 {
@@ -48,8 +37,34 @@ namespace Prescriptions.GUI.Views
 
         private void NewPrescriptionButtonClick(object sender, RoutedEventArgs e)
         {
-            var createPrescriptionView = new CreatePrescriptionWindow();
+            var createPrescriptionView = new CreatePrescriptionWindow(this.Container);
             createPrescriptionView.ShowDialog();
         }
+
+        private void POCPrescriptionPrintButtonClick(object sender, RoutedEventArgs e)
+        {
+            var prescription = new Prescription()
+            {
+                CreationDate = DateTime.Now,
+                Drugs = new List<PrescribedDrug>
+                {
+                    new PrescribedDrug{Name = "lek 1", AppliedRefund = API.Model.Drugs.RefundLevel.Bezpłatny},
+                    new PrescribedDrug{Name = "lek 2", AppliedRefund = API.Model.Drugs.RefundLevel.FiftyPercent}
+                },
+                ForPatient = new Patient { Name = "Jan", Surname = "Kowalski" },
+                IdNumber = "112542",
+                NfzWardId = 15,
+                Permission = PermissionType.S,
+                PermissionNumber = 1252424,
+                PrescribedBy = new Doctor { Name = "Rafał", Surname = "Wilczur", PermissionId = "12512415" },
+                PrescribedByCompany = "Twój lekarz sp. z o.o.",
+                PrescribedByDoctor = new Doctor { Name = "Rafał", Surname = "Wilczur", PermissionId = "12512415" },
+                Regon = "23627236",
+                ValidFrom = DateTime.Now
+            };
+            var createPrescriptionView = new CreatePrescriptionWindow(this.Container, prescription);
+            createPrescriptionView.ShowDialog();
+        }
+
     }
 }

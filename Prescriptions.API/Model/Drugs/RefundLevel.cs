@@ -7,7 +7,7 @@ namespace Prescriptions.API.Model.Drugs
     public enum RefundLevel
     {
         [XmlEnum("bezpłatny")]
-        Full,
+        Bezpłatny,
         [XmlEnum("bezpłatny do limitu")]
         Limited,
         [XmlEnum("ryczałt")]

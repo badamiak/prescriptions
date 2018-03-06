@@ -1,17 +1,19 @@
 ﻿using Prescriptions.API.Model.Drugs;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Prescriptions.API.Model
 {
-    public class Prescription
+    public class Prescription : INotifyPropertyChanged
     {
         public virtual string Regon { get; set; }
         public virtual string IdNumber { get; set; }
-        public virtual Patient ForPatient { get; set; }
+        private Patient _forPatient;
+        public virtual Patient ForPatient { get { return this._forPatient; } set { this._forPatient = value; Notify(nameof(ForPatient)); } }
         public virtual Doctor PrescribedBy { get; set; }
         public virtual int NfzWardId { get; set; }
         public virtual PermissionType Permission { get; set; }
@@ -21,5 +23,14 @@ namespace Prescriptions.API.Model
         public virtual DateTime ValidFrom { get; set; } = DateTime.Now;
         public virtual Doctor PrescribedByDoctor { get; set; }
         public virtual string PrescribedByCompany { get; set; }
+
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+
+        private void Notify(string propertyName)
+        {
+            var e = PropertyChanged;
+            e?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        
     }
 }
