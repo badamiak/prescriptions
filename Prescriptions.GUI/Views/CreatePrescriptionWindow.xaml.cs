@@ -61,6 +61,8 @@ namespace Prescriptions.GUI.Views
             var print = new PrintDialog();
             if(print.ShowDialog() == true)
             {
+                this.PrescriptionPaper.Width = 4 * 96;
+                this.PrescriptionPaper.Height = 8 * 96;
                 print.PrintVisual(this.PrescriptionPaper, "Printing presscription");
             }
         }

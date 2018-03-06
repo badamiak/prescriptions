@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:Prescriptions.GUI.Views"
              Background="white"
              mc:Ignorable="d" 
-             Height="860" Width="440"
+             Height="768" Width="384" Margin="0,15,0,0"
              d:DataContext="{d:DesignInstance Type=pres:Prescription}">
     <Border BorderBrush="black" BorderThickness="3">
         <Grid Background="White">
@@ -29,7 +29,7 @@
                 </StackPanel>
                 <Label>Świadczeniodawca</Label>
                 <Label Content="{Binding PrescribedByCompany, Mode=TwoWay}"/>
-                <Image Margin="15,0,15,0" Height="45" Source="{Binding PrescribedByCompanyBarcode}"/>
+                <Image Margin="15,0,15,0" Height="30" Source="{Binding PrescribedByCompanyBarcode}"/>
 
             </StackPanel>
             <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="3"/>
@@ -38,11 +38,14 @@
                 <Label>Pacjent</Label>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="{Binding Name}"/>
-                    <Label Margin="5,0,0,0" Content="{Binding Surname}"/>
+                    <Label Content="{Binding Surname}"/>
                 </StackPanel>
                 <Label Content="{Binding Address}"/>
             </StackPanel>
-            <Label Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Content="{Binding ForPatient.Pesel}"/>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Label>PESEL</Label>
+                <Label Content="{Binding ForPatient.Pesel}"/>
+            </StackPanel>
 
             <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
                 <UniformGrid Columns="1">
@@ -79,7 +82,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-            <Image Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Margin="15,5,15,5" Height="45" Source="{Binding IdNumberBarcode}"/>
+            <Image Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Margin="15,5,15,5" Height="30" Source="{Binding IdNumberBarcode}"/>
             <StackPanel Grid.Row="3">
                 <Label>Wystawiono dnia</Label>
                 <Label Content="{Binding CreationDate}"/>

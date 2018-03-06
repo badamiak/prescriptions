@@ -54,7 +54,7 @@ namespace Prescriptions.GUI.Views
                     new PrescribedDrug{Name = "lek 1", AppliedRefund = API.Model.Drugs.RefundLevel.Bezpłatny},
                     new PrescribedDrug{Name = "lek 2", AppliedRefund = API.Model.Drugs.RefundLevel.FiftyPercent}
                 },
-                ForPatient = new Patient { Name = "Jan", Surname = "Kowalski", Pesel = "87030501420" },
+                ForPatient = new Patient { Name = "Jan", Surname = "Kowalski", Address=$"al. Bakaliowa 13/4{Environment.NewLine}00-220 Warszsawa", Pesel = "87030501420" },
                 IdNumber = "0215010000014221845781",
                 NfzWardId = 15,
                 Permission = PermissionType.X,

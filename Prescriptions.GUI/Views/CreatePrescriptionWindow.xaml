@@ -9,12 +9,13 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="Pacjent" Click="SelectPatient"></MenuItem>
+            <MenuItem Header="Drukuj" Click="PrintButtonClick"/>
         </Menu>
         <ScrollViewer VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">
             <local:PrescriptionControl x:Name="PrescriptionPaper" ScrollViewer.CanContentScroll="True"/>
         </ScrollViewer>
         <UniformGrid Columns="3">
-            <Button Click="PrintButtonClick">Drukuj</Button>
+            <Button Click="PrintButtonClick" >Drukuj</Button>
             <Button Click="SaveButtonClick">Zapisz</Button>
             <Button Click="CancelButtonClick">Anuluj</Button>
         </UniformGrid>
