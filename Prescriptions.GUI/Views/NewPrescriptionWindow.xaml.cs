@@ -99,5 +99,31 @@ namespace Prescriptions.GUI.Views
         {
             this.Close();
         }
+
+        private void SelectDoctorButtonClicked(object sender, RoutedEventArgs e)
+        {
+            var selector = new DoctorSelector(database.GetAllEntitiesOfType<Doctor>().ToList());
+            selector.ShowDialog();
+
+            Prescription.By = selector.SelectedDoctor;
+        }
+
+        private Prescription CreatePrescription(NewPrescription data)
+        {
+            return new Prescription
+            {
+                IdNumber = data.PresciptionId,
+                CreationDate = DateTime.Now,
+                Drugs = data.Drugs,
+                ForPatient = data.For,
+                IdNumberBarcode = BarcodeService.GetBarcode(data.PresciptionId),
+                NfzWardId = data.NfzWardId,
+                Permission = data.Permission,
+                PrescribedByCompany = data.Company,
+                PrescribedByCompanyBarcode = BarcodeService.GetBarcode(data.Company),
+                PrescribedByDoctor = data.By,
+                ValidFrom = data.ValidFrom
+            }
+        }
     }
 }

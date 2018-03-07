@@ -15,5 +15,10 @@ namespace Prescriptions.API.Model
         public virtual string Surname { get; set; }
         public virtual string PermissionId { get; set; }
         public virtual BitmapImage PermissionIdBarcode { get { return BarcodeService.GetBarcode(PermissionId); } }
+
+        public override string ToString()
+        {
+            return $"{Name} {Surname}";
+        }
     }
 }

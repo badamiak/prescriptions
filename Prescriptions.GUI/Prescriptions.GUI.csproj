@@ -113,6 +113,9 @@
     <Compile Include="Views\PrescriptionView.xaml.cs">
       <DependentUpon>PrescriptionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Selectors\DoctorSelector.xaml.cs">
+      <DependentUpon>DoctorSelector.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Selectors\DrugSelector.xaml.cs">
       <DependentUpon>DrugSelector.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PrescriptionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Selectors\DoctorSelector.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

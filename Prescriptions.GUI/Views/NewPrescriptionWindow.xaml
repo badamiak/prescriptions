@@ -9,6 +9,9 @@
         
         Title="NewPrescriptionWindow" Height="auto" Width="400">
     <StackPanel>
+        <GroupBox Header="Numer recepty">
+            <TextBox Text="{Binding PresciptionId}"/>
+        </GroupBox>
         <GroupBox Header="Świadczeniodawca">
             <TextBox Text="{Binding Company}"/>
         </GroupBox>
@@ -48,8 +51,8 @@
         </GroupBox>
         <GroupBox Header="Lekarz wystawiający">
             <StackPanel>
-                <TextBox IsEnabled="False" Text="{Binding By}"/>
-                <Button>Wybierz</Button>
+                <TextBlock Text="{Binding By}"/>
+                <Button Click="SelectDoctorButtonClicked">Wybierz</Button>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Podmiot wystawiający">
