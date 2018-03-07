@@ -16,6 +16,7 @@ namespace Prescriptions.ModelMappings
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.Name);
             Map(x => x.Surname);
+            Map(x => x.Address);
             Map(x => x.Pesel).CustomSqlType("varchar(13)");
             Map(x => x.DateOfBirth);
         }
