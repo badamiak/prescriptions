@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseAccess.cs" />
     <Compile Include="Database\DatabaseSchemaOperations.cs" />
+    <Compile Include="ModelMappings\DoctorMap.cs" />
     <Compile Include="ModelMappings\Drugs\DrugMap.cs" />
     <Compile Include="ModelMappings\Drugs\RefundMap.cs" />
     <Compile Include="ModelMappings\PatientMap.cs" />

@@ -15,6 +15,7 @@ namespace Prescriptions.API.Model.Drugs
         [XmlEnum("50%")]
         FiftyPercent,
         [XmlEnum("30%")]
-        ThirtyPercent
+        ThirtyPercent,
+        Full
     }
 }

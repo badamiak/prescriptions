@@ -8,6 +8,7 @@
         Title="{Binding Path=AppTitle}" Height="350" Width="525">
     <UniformGrid Columns="1">
         <Button Click="Button_Click">Nowy pacjent</Button>
+        <Button Click="NewDoctorButtonClick">Nowy doktor</Button>
         <Button Click="NewPrescriptionButtonClick">Nowa recepta</Button>
         <Button Click="POCPrescriptionPrintButtonClick">POC druk</Button>
     </UniformGrid>

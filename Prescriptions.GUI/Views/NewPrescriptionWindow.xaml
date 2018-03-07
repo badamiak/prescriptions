@@ -26,19 +26,21 @@
         </GroupBox>
         <GroupBox Header="Leki">
             <StackPanel>
-                <ListView ItemsSource="{Binding Drugs}">
+                <ListView Name="DrugsList" ItemsSource="{Binding Drugs}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Click="RemoveDrug">X</Button>
-                                <Label Content="{Binding Name}"/>
-                                <Label Content="{Binding Packaging}"/>
+                                <Label Content="{Binding Drug.Name}"/>
+                                <Label Content="{Binding Drug.Packaging}"/>
                                 <Label Content="{Binding AppliedRefund}" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Click="AddDrugButtonClick">Dodaj</Button>
+                <UniformGrid Columns="2">
+                    <Button Click="AddDrugButtonClick">Dodaj</Button>
+                    <Button Click="RemoveDrug">Usuń</Button>
+                </UniformGrid>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Ważna od dnia">

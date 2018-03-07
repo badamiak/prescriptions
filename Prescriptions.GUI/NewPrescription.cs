@@ -10,11 +10,12 @@ namespace Prescriptions.GUI
 {
     public class NewPrescription : INotifyPropertyChanged
     {
-        private List<PrescribedDrug> _drugs;
+        private List<PrescribedDrug> _drugs = new List<PrescribedDrug>();
         private Patient _for;
         private Doctor _by;
 
         public List<PermissionType> Permissions { get; set; } = Enum.GetValues(typeof(PermissionType)).Cast<PermissionType>().ToList();
+        public string PresciptionId { get; set; }
         public string Company { get; set; }
         public Patient For
         {
@@ -56,6 +57,13 @@ namespace Prescriptions.GUI
         {
             var ev = PropertyChanged;
             ev?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void DrugsListChanged()
+        {
+            var temp = Drugs;
+            Drugs = null;
+            Drugs = temp;
         }
     }
 }

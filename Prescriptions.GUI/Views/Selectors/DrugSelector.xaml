@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prescriptions.GUI.Views.Selectors"
         mc:Ignorable="d"
-        Title="DrugSelector" Height="300" Width="300">
-    <StackPanel>
+        Title="DrugSelector" Height="400" Width="300">
+    <StackPanel VerticalAlignment="Stretch">
         <ScrollViewer>
-
-            <ListBox ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Drugs}" SelectedItem="{Binding SelectedDrug}">
+            <ListBox Name="SelectionList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding}" SelectionChanged="SelectedDrugChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -21,7 +20,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <ComboBox ItemsSource="{Binding SelectedDrug.Refunds}" SelectedItem="{Binding SelectedDrug.AppliedRefund}"/>
+        <ComboBox Name="RefundSelector" ItemsSource="{Binding}" SelectionChanged="SelectedRefundChanged"/>
+        <TextBlock Name="InCase" TextWrapping="Wrap"/>
         <Button Click="SelectButtonClick">Wybierz</Button>
     </StackPanel>
 </Window>

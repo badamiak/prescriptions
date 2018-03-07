@@ -98,6 +98,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="NewPrescription.cs" />
+    <Compile Include="Views\CreateDoctorWidnow.xaml.cs">
+      <DependentUpon>CreateDoctorWidnow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CreatePrescriptionWindow.xaml.cs">
       <DependentUpon>CreatePrescriptionWindow.xaml</DependentUpon>
     </Compile>
@@ -116,6 +119,10 @@
     <Compile Include="Views\Selectors\PatientSelector.xaml.cs">
       <DependentUpon>PatientSelector.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\CreateDoctorWidnow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CreatePatientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

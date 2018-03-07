@@ -15,5 +15,10 @@ namespace Prescriptions.API.Model.Drugs
         [XmlText]
         public virtual string Value{ get; set; }
 
+        public override string ToString()
+        {
+            return Level.ToString();
+        }
+
     }
 }

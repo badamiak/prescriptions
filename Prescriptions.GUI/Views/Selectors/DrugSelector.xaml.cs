@@ -22,7 +22,7 @@ namespace Prescriptions.GUI.Views.Selectors
     /// </summary>
     public partial class DrugSelector : Window, INotifyPropertyChanged
     {
-        private PrescribedDrug _selectedDrug;
+        private PrescribedDrug _selectedDrug = new PrescribedDrug();
         public PrescribedDrug SelectedDrug
         {
             get
@@ -35,7 +35,6 @@ namespace Prescriptions.GUI.Views.Selectors
                 NotifyPropertyChanged(nameof(SelectedDrug));
             }
         }
-        public List<Drug> Drugs { get; set; }
 
         public DrugSelector()
         {
@@ -44,7 +43,7 @@ namespace Prescriptions.GUI.Views.Selectors
 
         public DrugSelector(List<Drug> drugs) : this()
         {
-            this.Drugs = drugs;
+            this.DataContext = drugs;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -57,6 +56,26 @@ namespace Prescriptions.GUI.Views.Selectors
         private void SelectButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void SelectedDrugChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SelectedDrug.Drug = SelectionList.SelectedItem as Drug;
+            if(SelectedDrug.Drug.Refunds?.Count != 0)
+            {
+                RefundSelector.ItemsSource = SelectedDrug.Drug.Refunds;
+            }
+            else
+            {
+                RefundSelector.ItemsSource = new List<Refund> { new Refund { Level = RefundLevel.Full, Value = "Zawsze" } };
+            }
+        }
+
+        private void SelectedRefundChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var refund = RefundSelector.SelectedItem as Refund;
+            SelectedDrug.AppliedRefund = refund.Level;
+            InCase.Text = refund.Value;
         }
     }
 }

@@ -65,14 +65,15 @@ namespace Prescriptions.GUI.Views
 
         private void RemoveDrug(object sender, RoutedEventArgs e)
         {
-
+            Prescription.Drugs.Remove(DrugsList.SelectedItem as PrescribedDrug);
+            Prescription.DrugsListChanged();
         }
 
         private void AddDrugButtonClick(object sender, RoutedEventArgs e)
         {
             if (drugs == null)
             {
-                drugs = database.GetAllEntitiesOfType<Drug>().Take(10).ToList();
+                drugs = database.GetAllEntitiesOfType<Drug>().Where(x=>x.Refunds.Count > 0).Take(10).ToList();
             }
             var selector = new DrugSelector(drugs);
             selector.ShowDialog();
@@ -80,6 +81,7 @@ namespace Prescriptions.GUI.Views
             if (selector.SelectedDrug != null)
             {
                 Prescription.Drugs.Add(selector.SelectedDrug);
+                Prescription.DrugsListChanged();
             }
         }
 
