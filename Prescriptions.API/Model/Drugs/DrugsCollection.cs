@@ -9,6 +9,6 @@ namespace Prescriptions.API.Model.Drugs
     public class DrugsCollection
     {
         [XmlElement("Lek")]
-        public List<Drug> Drugs { get; set; }
+        public List<XmlDrug> Drugs { get; set; }
     }
 }

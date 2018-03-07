@@ -1,0 +1,27 @@
+﻿<Window x:Class="Prescriptions.GUI.Views.Selectors.DrugSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prescriptions.GUI.Views.Selectors"
+        mc:Ignorable="d"
+        Title="DrugSelector" Height="400" Width="300">
+    <StackPanel VerticalAlignment="Stretch">
+        <ScrollViewer>
+            <ListBox Name="SelectionList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding}" SelectionChanged="SelectedDrugChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Name}"/>
+                            <Label Content="{Binding Form}"/>
+                            <Label Content="{Binding Packaging}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <ComboBox Name="RefundSelector" ItemsSource="{Binding}" SelectionChanged="SelectedRefundChanged"/>
+        <TextBlock Name="InCase" TextWrapping="Wrap"/>
+        <Button Click="SelectButtonClick">Wybierz</Button>
+    </StackPanel>
+</Window>

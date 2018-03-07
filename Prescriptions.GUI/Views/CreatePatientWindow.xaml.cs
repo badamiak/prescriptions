@@ -31,9 +31,9 @@ namespace Prescriptions.GUI.Views
             InitializeComponent();
         }
 
-        public CreatePatientWindow(IContainer container, Patient context) : this()
+        public CreatePatientWindow(IContainer container) : this()
         {
-            this.DataContext = context;
+            this.DataContext = new Patient();
             this.container = container;
         }
 

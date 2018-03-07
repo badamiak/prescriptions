@@ -3,18 +3,10 @@ using Prescriptions.API.Model;
 using Prescriptions.GUI.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Prescriptions.GUI.Views
 {
@@ -42,14 +34,18 @@ namespace Prescriptions.GUI.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var createPatientView = new CreatePatientWindow(this.Container, new Patient());
-            createPatientView.ShowDialog();
+            new CreatePatientWindow(this.Container).ShowDialog();
         }
 
         private void NewPrescriptionButtonClick(object sender, RoutedEventArgs e)
         {
-            var createPrescriptionView = new CreatePrescriptionWindow();
-            createPrescriptionView.ShowDialog();
+            new NewPrescriptionWindow(this.Container).ShowDialog();
+        }
+
+        private void NewDoctorButtonClick(object sender, RoutedEventArgs e)
+        {
+            new CreateDoctorWidnow(Container).ShowDialog();
+            
         }
     }
 }

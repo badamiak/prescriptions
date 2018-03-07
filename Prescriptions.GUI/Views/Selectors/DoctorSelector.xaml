@@ -1,0 +1,24 @@
+﻿<Window x:Class="Prescriptions.GUI.Views.Selectors.DoctorSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prescriptions.GUI.Views.Selectors"
+        mc:Ignorable="d"
+        xmlns:model="clr-namespace:Prescriptions.API.Model;assembly=Prescriptions.API"
+        Title="DoctorSelector" Height="300" Width="300">
+    <StackPanel>
+
+        <ListBox Name="DoctorsList" ItemsSource="{Binding}" SelectionChanged="SelectedDoctorChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding Surname}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Click="SelectDoctorButtonClick">Wybierz</Button>
+    </StackPanel>
+</Window>

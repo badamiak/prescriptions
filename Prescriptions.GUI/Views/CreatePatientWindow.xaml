@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="CreatePatientWindow" Height="300" Width="300">
     <UniformGrid Columns="2">
-        <Label>Name</Label>
+        <Label>Imię</Label>
         <TextBox Text="{Binding Path=Name, Mode=TwoWay}"></TextBox>
 
-        <Label>Surname</Label>
+        <Label>Nazwisko</Label>
         <TextBox Text="{Binding Path=Surname, Mode=TwoWay}"></TextBox>
 
         <Label>PESEL</Label>
         <TextBox Text="{Binding Path=Pesel, Mode=TwoWay}" LostFocus="TextBox_LostFocus"/>
 
-        <Label>Address</Label>
+        <Label>Adres</Label>
         <TextBox Text="{Binding Path=Address, Mode=TwoWay}"></TextBox>
 
-        <Label>Date of birth</Label>
+        <Label>Data urodzenia</Label>
         <DatePicker SelectedDate="{Binding Path=DateOfBirth, Mode=TwoWay}"></DatePicker>
 
         <Button Click="SaveButtonClicked">Save</Button>

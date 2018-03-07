@@ -7,79 +7,105 @@
              xmlns:local="clr-namespace:Prescriptions.GUI.Views"
              Background="white"
              mc:Ignorable="d" 
-             Height="860" Width="440"
+             Height="768" Width="384" Margin="0,15,0,0"
              d:DataContext="{d:DesignInstance Type=pres:Prescription}">
-    <Grid Background="White">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-        </Grid.RowDefinitions>
+    <Border BorderBrush="black" BorderThickness="3">
+        <Grid Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.ColumnSpan="3" Orientation="Vertical">
-
-            <StackPanel Orientation="Horizontal">
-                <Label>Recepta</Label>
-                    <TextBox Margin="5,0,0,0" Text="{Binding IdNumber, Mode=TwoWay}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Recepta</Label>
+                    <Label Margin="5,0,0,0" Content="{Binding IdNumber, Mode=TwoWay}"/>
                 </StackPanel>
                 <Label>Świadczeniodawca</Label>
-                <TextBox TextWrapping="Wrap" Text="{Binding PrescribedByCompany, Mode=TwoWay}"/>
+                <Label Content="{Binding PrescribedByCompany, Mode=TwoWay}"/>
+                <Image Margin="15,0,15,0" Height="30" Source="{Binding PrescribedByCompanyBarcode}"/>
+
             </StackPanel>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding ForPatient}">
-            <Label>Pacjent</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding Name}"/>
-                <TextBox Margin="5,0,0,0"  Text="{Binding Surname}"/>
+            <Separator Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="3"/>
+            
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" DataContext="{Binding ForPatient}">
+                <Label>Pacjent</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding Name}"/>
+                    <Label Content="{Binding Surname}"/>
+                </StackPanel>
+                <Label Content="{Binding Address}"/>
             </StackPanel>
-            <TextBox Text="{Binding Address}"/>
-            <TextBox Text="{Binding Pesel}"/>
-        </StackPanel>
-        <UniformGrid Columns="1" Grid.Row="1" Grid.Column="2">
-            <StackPanel>
-                <Label>Oddział NFZ</Label>
-                <TextBox Text="{Binding NfzWardId}"/>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+                <Label>PESEL</Label>
+                <Label Content="{Binding ForPatient.Pesel}"/>
             </StackPanel>
-            <Label>Uprawnienia</Label>
-            <Label>Choroby przewlekłe</Label>
-        </UniformGrid>
-        <StackPanel  Grid.Row="2" Grid.ColumnSpan="3">
-            <Label>Rp.</Label>
-            <ListBox Grid.RowSpan="2" ItemsSource="{Binding Drugs}">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="8*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" Text="{Binding Name}"/>
-                            <TextBox Grid.Column="1" Text="{Binding AppliedRefund}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
-        <StackPanel Grid.Row="3">
-            <Label>Wystawiono dnia</Label>
-            <DatePicker SelectedDate="{Binding CreationDate}"/>
-            <Separator/>
-            <Label>Ważna od dnia</Label>
-            <DatePicker SelectedDate="{Binding ValidFrom}"/>
-            <Separator/>
-        </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
-            <Label>Dane id. i podpis lekarza</Label>
-            <StackPanel Orientation="Horizontal">
-                <TextBox Text="{Binding PrescribedByDoctor.Name, Mode=OneWay}"/>
-                <TextBox Margin="5,0,0,0" Text="{Binding PrescribedByDoctor.Surname, Mode=OneWay}"/>
+
+            <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1">
+                <UniformGrid Columns="1">
+                <StackPanel>
+                    <Label>Oddział NFZ</Label>
+                    <Label Content="{Binding NfzWardId}"/>
+                    <Separator BorderBrush="Black" BorderThickness="3"/>
+                </StackPanel>
+                <StackPanel>
+                    <Label>Uprawnienia</Label>
+                    <Label Content="{Binding Permission}"></Label>
+                    <Separator BorderBrush="Black" BorderThickness="3"/>
+                </StackPanel>
+                <Label>Choroby przewlekłe</Label>
+            </UniformGrid>
+            </Border>
+
+            <Separator Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" BorderBrush="Black" BorderThickness="3"/>
+
+            <StackPanel  Grid.Row="2" Grid.ColumnSpan="3">
+                <Label>Rp.</Label>
+                <ListBox Grid.RowSpan="2" ItemsSource="{Binding Drugs}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid HorizontalAlignment="Stretch">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="{Binding Name}"/>
+                                <Label Grid.Column="1" Content="{Binding AppliedRefund}"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </StackPanel>
-            <TextBox Text="{Binding PrescribedByDoctor.PermissionId, Mode=OneWay}"/>
-        </StackPanel>
-        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">Dane podmiotu wystawiającego</Label>
-    </Grid>
+            <Image Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Margin="15,5,15,5" Height="30" Source="{Binding IdNumberBarcode}"/>
+            <StackPanel Grid.Row="3">
+                <Label>Wystawiono dnia</Label>
+                <Label Content="{Binding CreationDate}"/>
+                <Separator/>
+                <Label>Ważna od dnia</Label>
+                <Label Content="{Binding ValidFrom}"/>
+                <Separator/>
+            </StackPanel>
+            <Separator Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" BorderBrush="Black" BorderThickness="3"/>
+
+            <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                <Label>Dane id. i podpis lekarza</Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding PrescribedByDoctor.Name, Mode=OneWay}"/>
+                    <Label Margin="5,0,0,0" Content="{Binding PrescribedByDoctor.Surname, Mode=OneWay}"/>
+                </StackPanel>
+                <Label Content="{Binding PrescribedByDoctor.PermissionId, Mode=OneWay}"/>
+                <Image Margin="15,0,15,0" Height="30" Source="{Binding PrescribedByDoctor.PermissionIdBarcode}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                <Label >Dane podmiotu wystawiającego</Label>
+                <Label Content="{Binding PlacedBy}"></Label>
+            </StackPanel>
+        </Grid>
+    </Border>
 </UserControl>
