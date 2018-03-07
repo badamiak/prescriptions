@@ -12,8 +12,10 @@ namespace Prescriptions.API.Model
 {
     public class Prescription
     {
+        public virtual int Id { get; set; }
+
         public virtual string IdNumber { get; set; }
-        public BitmapImage IdNumberBarcode { get; set; } 
+        public virtual BitmapImage IdNumberBarcode { get; set; } 
         
         public virtual BitmapImage PrescribedByCompanyBarcode { get; set; }
         public virtual string PrescribedByCompany { get; set; }

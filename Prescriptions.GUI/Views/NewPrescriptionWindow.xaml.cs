@@ -129,7 +129,7 @@ namespace Prescriptions.GUI.Views
                 PrescribedByCompany = data.Company,
                 PrescribedByCompanyBarcode = BarcodeService.GetBarcode(data.Company),
                 PrescribedByDoctor = data.By,
-                ValidFrom = data.ValidFrom
+                ValidFrom = data.ValidFrom,
                 PlacedBy = data.PlacedBy
             };
         }

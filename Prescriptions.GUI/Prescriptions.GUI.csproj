@@ -101,9 +101,6 @@
     <Compile Include="Views\CreateDoctorWidnow.xaml.cs">
       <DependentUpon>CreateDoctorWidnow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreatePrescriptionWindow.xaml.cs">
-      <DependentUpon>CreatePrescriptionWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\NewPrescriptionWindow.xaml.cs">
       <DependentUpon>NewPrescriptionWindow.xaml</DependentUpon>
     </Compile>
@@ -127,10 +124,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreatePatientWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\CreatePrescriptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
