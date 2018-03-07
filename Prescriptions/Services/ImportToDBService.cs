@@ -54,7 +54,7 @@ namespace Prescriptions.Services
             Logger.Info("DONE: Deactivating removed drugs");
 
             Logger.Info("Saving new drugs");
-            PersistNewDrugs(newDrugs);
+            PersistNewDrugs(newDrugs.Select(x=>x.ToDbDrug()).ToList());
             Logger.Info("DONE: Saving new drugs");
 
 
@@ -76,19 +76,19 @@ namespace Prescriptions.Services
             this.database.SaveBatch(removedDrugs);
         }
 
-        private List<Drug> GetChangedDrugs(IEnumerable<Drug> possiblyChangedDrugsFromImport, List<Drug> existingDrugs)
+        private List<Drug> GetChangedDrugs(IEnumerable<XmlDrug> possiblyChangedDrugsFromImport, List<Drug> existingDrugs)
         {
 
-            var changedBL7 = possiblyChangedDrugsFromImport.AsParallel().Where(x => existingDrugs.Where(e => e.BL7 == x.BL7).FirstOrDefault()?.HasChangedAccordingTo(x) ?? false).Select(x=>x.BL7).ToList();
+            var changedBL7 = possiblyChangedDrugsFromImport.AsParallel().Select(x=>x.ToDbDrug()).Where(x => existingDrugs.Where(e => e.BL7 == x.BL7).FirstOrDefault()?.HasChangedAccordingTo(x) ?? false).Select(x=>x.BL7).ToList();
             return existingDrugs.Where(x=>changedBL7.Contains(x.BL7)).ToList();
         }
 
-        private void PersistChangedDrugs(IEnumerable<Drug> changedExistingDrugs, List<Drug> importedDrugs)
+        private void PersistChangedDrugs(IEnumerable<Drug> changedExistingDrugs, List<XmlDrug> importedDrugs)
         {
             var changedBL7 = changedExistingDrugs.Select(x => x.BL7).ToList();
 
             MarkRemovedDrugsAsInactive(changedExistingDrugs.ToList());
-            this.database.SaveBatch(importedDrugs.Where(x => changedBL7.Contains(x.BL7)));
+            this.database.SaveBatch(importedDrugs.Where(x => changedBL7.Contains(x.BL7)).Select(x=>x.ToDbDrug()));
         }
     }
 

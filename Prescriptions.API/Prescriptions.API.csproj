@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Doctor.cs" />
+    <Compile Include="Model\Drugs\XmlDrug.cs" />
     <Compile Include="Model\Drugs\Drug.cs" />
     <Compile Include="Model\Drugs\DrugsCollection.cs" />
     <Compile Include="Model\Drugs\Refund.cs" />

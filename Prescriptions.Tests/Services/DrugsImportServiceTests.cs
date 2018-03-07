@@ -13,7 +13,7 @@ namespace Prescriptions.Tests.Services
     public class DrugsImportServiceTest
     {
         private DrugsCollection result;
-        private Drug testDrug;
+        private XmlDrug testDrug;
         private FileInfo testFile;
 
         [OneTimeSetUp]
@@ -104,7 +104,7 @@ namespace Prescriptions.Tests.Services
         [Test]
         public void ParsedRefundationsShouldContain4Objects()
         {
-            this.testDrug.Refunds.ToList().Count.ShouldBe(4);
+            this.testDrug.XmlRefunds.ToList().Count.ShouldBe(4);
         }
         [TestCase(RefundLevel.Bezpłatny, "full")]
         [TestCase(RefundLevel.LumpSum, "lump sum")]
@@ -112,7 +112,7 @@ namespace Prescriptions.Tests.Services
         [TestCase(RefundLevel.ThirtyPercent, "thirty")]
         public void ParsedRefundationFull(RefundLevel level, string description)
         {
-            this.testDrug.Refunds.First(x => x.Level == level).Value.ShouldBe(description);
+            this.testDrug.XmlRefunds.First(x => x.Level == level).Value.ShouldBe(description);
         }
     }
 }
