@@ -32,7 +32,7 @@ namespace Prescriptions.GUI.Views
             this.DataContext = context;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void NewPatientButtonClick(object sender, RoutedEventArgs e)
         {
             new CreatePatientWindow(this.Container).ShowDialog();
         }

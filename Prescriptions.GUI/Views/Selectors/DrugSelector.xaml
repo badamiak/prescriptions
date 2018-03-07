@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Prescriptions.GUI.Views.Selectors"
         mc:Ignorable="d"
-        Title="DrugSelector" Height="400" Width="300">
+        Title="DrugSelector" Height="500" Width="300">
     <StackPanel VerticalAlignment="Stretch">
         <ScrollViewer>
             <ListBox Name="SelectionList" ScrollViewer.CanContentScroll="True" ItemsSource="{Binding}" SelectionChanged="SelectedDrugChanged">
