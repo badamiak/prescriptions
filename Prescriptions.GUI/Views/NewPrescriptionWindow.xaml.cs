@@ -92,7 +92,14 @@ namespace Prescriptions.GUI.Views
 
         private void PrintButtonClick(object sender, RoutedEventArgs e)
         {
-
+            var prescriptionPaper = new PrescriptionControl(CreatePrescription(Prescription));
+            var print = new PrintDialog();
+            if (print.ShowDialog() == true)
+            {
+                prescriptionPaper.Width = 4 * 96;
+                prescriptionPaper.Height = 8 * 96;
+                print.PrintVisual(prescriptionPaper, "Printing presscription");
+            }
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -123,7 +130,8 @@ namespace Prescriptions.GUI.Views
                 PrescribedByCompanyBarcode = BarcodeService.GetBarcode(data.Company),
                 PrescribedByDoctor = data.By,
                 ValidFrom = data.ValidFrom
-            }
+                PlacedBy = data.PlacedBy
+            };
         }
     }
 }
