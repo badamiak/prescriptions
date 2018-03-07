@@ -87,7 +87,8 @@ namespace Prescriptions.GUI.Views
 
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
-
+            database.Save(CreatePrescription(Prescription));
+            this.Close();
         }
 
         private void PrintButtonClick(object sender, RoutedEventArgs e)
