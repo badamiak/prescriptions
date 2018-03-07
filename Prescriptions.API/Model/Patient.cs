@@ -41,5 +41,10 @@ namespace Prescriptions.API.Model
             }
             else return false;
         }
+
+        public override string ToString()
+        {
+            return $"{Name} {Surname} {Pesel}";
+        }
     }
 }

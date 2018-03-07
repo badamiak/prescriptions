@@ -40,7 +40,7 @@ namespace Prescriptions.GUI.Views
 
         private void NewPrescriptionButtonClick(object sender, RoutedEventArgs e)
         {
-            var createPrescriptionView = new CreatePrescriptionWindow(this.Container);
+            var createPrescriptionView = new NewPrescriptionWindow(this.Container);
             createPrescriptionView.ShowDialog();
         }
 

@@ -1,0 +1,62 @@
+﻿<Window x:Class="Prescriptions.GUI.Views.NewPrescriptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prescriptions.GUI.Views"
+        xmlns:gui="clr-namespace:Prescriptions.GUI"
+        mc:Ignorable="d"
+        
+        Title="NewPrescriptionWindow" Height="auto" Width="400">
+    <StackPanel>
+        <GroupBox Header="Świadczeniodawca">
+            <TextBox Text="{Binding Company}"/>
+        </GroupBox>
+        <GroupBox Header="Pacjent">
+            <StackPanel>
+                <TextBlock Text="{Binding For}"/>
+                <Button Click="SelectPatientClick">Wybierz</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Oddział NFZ">
+            <TextBox Text="{Binding NfzWardId}"/>
+        </GroupBox>
+        <GroupBox Header="Uprawnienia">
+            <ComboBox ItemsSource="{Binding Permissions}" SelectedItem="{Binding Permission}"/>
+        </GroupBox>
+        <GroupBox Header="Leki">
+            <StackPanel>
+                <ListView ItemsSource="{Binding Drugs}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Click="RemoveDrug">X</Button>
+                                <Label Content="{Binding Name}"/>
+                                <Label Content="{Binding Packaging}"/>
+                                <Label Content="{Binding AppliedRefund}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Click="AddDrugButtonClick">Dodaj</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Ważna od dnia">
+            <DatePicker SelectedDate="{Binding ValidFrom}"/>
+        </GroupBox>
+        <GroupBox Header="Lekarz wystawiający">
+            <StackPanel>
+                <TextBox IsEnabled="False" Text="{Binding By}"/>
+                <Button>Wybierz</Button>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Podmiot wystawiający">
+            <TextBox Text="{Binding PlacedBy}"/>
+        </GroupBox>
+        <UniformGrid Columns="3">
+            <Button Click="SaveButtonClick">Zapisz</Button>
+            <Button Click="PrintButtonClick">Drukuj</Button>
+            <Button Click="CancelButtonClick">Anuluj</Button>
+        </UniformGrid>
+    </StackPanel>
+</Window>

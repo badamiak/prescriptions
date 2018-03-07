@@ -9,6 +9,7 @@
     <StackPanel>
         <Menu>
             <MenuItem Header="Pacjent" Click="SelectPatient"></MenuItem>
+            <MenuItem Header="Leki"></MenuItem>
             <MenuItem Header="Drukuj" Click="PrintButtonClick"/>
         </Menu>
         <ScrollViewer VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True">

@@ -20,7 +20,7 @@ namespace Prescriptions.GUI.Views.Selectors
     /// </summary>
     public partial class PatientSelector : Window
     {
-        public Patient SelectedPatient { get; private set; }
+        public Patient SelectedPatient { get; set; }
         public PatientSelector()
         {
             InitializeComponent();
