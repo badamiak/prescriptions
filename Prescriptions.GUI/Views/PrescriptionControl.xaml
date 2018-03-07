@@ -75,7 +75,7 @@
                                     <ColumnDefinition Width="8*"/>
                                     <ColumnDefinition Width="2*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Content="{Binding Name}"/>
+                                <Label Grid.Column="0" Content="{Binding Drug.Name}"/>
                                 <Label Grid.Column="1" Content="{Binding AppliedRefund}"/>
                             </Grid>
                         </DataTemplate>
